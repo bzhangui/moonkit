@@ -1,10 +1,10 @@
-name = "username/moonkit"
+name = "bzhangui/moonkit"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/username/moonkit"
+repository = "https://github.com/bzhangui/moonkit"
 
 license = "Apache-2.0"
 
