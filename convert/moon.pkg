@@ -1,0 +1,8 @@
+import {
+  "moonbitlang/core/builtin",
+  "moonbitlang/core/string",
+  "moonbitlang/core/array",
+  "moonbitlang/core/int64",
+  "moonbitlang/core/double",
+  "moonbitlang/core/option",
+}
