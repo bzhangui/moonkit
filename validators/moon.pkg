@@ -1,0 +1,9 @@
+import {
+  "moonbitlang/core/builtin",
+  "moonbitlang/core/string",
+  "moonbitlang/core/array",
+  "moonbitlang/core/option",
+  "moonbitlang/core/result",
+  "moonbitlang/core/hashmap",
+  "moonbitlang/core/char",
+}
