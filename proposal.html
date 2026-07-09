@@ -4,96 +4,59 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "Microsoft YaHei", "SimSun", sans-serif; font-size: 13px; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 30px 40px; }
+  body { font-family: "Microsoft YaHei", "SimSun", sans-serif; font-size: 13px; line-height: 1.7; color: #333; max-width: 750px; margin: 0 auto; padding: 30px 40px; }
   h1 { text-align: center; font-size: 20px; margin-bottom: 4px; }
-  .subtitle { text-align: center; color: #666; font-size: 12px; margin-bottom: 20px; }
-  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-  table.info td { padding: 4px 8px; border: 1px solid #ddd; }
-  table.info td:first-child { background: #f5f5f5; width: 120px; font-weight: bold; }
-  table.modules { margin: 10px 0; }
-  table.modules th { background: #2d2d2d; color: #fff; padding: 6px 10px; text-align: left; }
-  table.modules td { padding: 5px 10px; border: 1px solid #ddd; }
-  table.modules tr:nth-child(even) td { background: #fafafa; }
-  h2 { font-size: 15px; border-bottom: 2px solid #2d2d2d; padding-bottom: 3px; margin: 16px 0 8px 0; }
-  h3 { font-size: 13px; margin: 10px 0 5px 0; }
-  ul, ol { margin-left: 20px; }
+  .meta { text-align: center; color: #555; font-size: 13px; margin-bottom: 22px; }
+  h2 { font-size: 14px; margin: 16px 0 6px 0; }
+  p { margin: 4px 0 8px 0; }
+  ul, ol { margin-left: 22px; }
   li { margin: 2px 0; }
-  .footer { text-align: center; margin-top: 20px; font-size: 11px; color: #999; }
-  .highlight { background: #fffde7; padding: 2px 4px; }
-  code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; font-size: 12px; }
+  .section-label { font-weight: bold; }
+  code { background: #f0f0f0; padding: 1px 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  table th { background: #eee; padding: 5px 8px; text-align: left; }
+  table td { padding: 5px 8px; border-bottom: 1px solid #ddd; }
 </style>
 </head>
 <body>
 
-<h1>MoonBit 国产基础软件开源大赛 项目申报书</h1>
-<p class="subtitle">MoonKit &mdash; MoonBit 生态扩展工具库</p>
+<h1>2026 MoonBit 国产基础软件开源大赛 项目申报书</h1>
+<p class="meta">参赛者：白旭桐</p>
 
-<table class="info">
-  <tr><td>项目名称</td><td>MoonKit</td></tr>
-  <tr><td>参赛者</td><td>bzhangui</td></tr>
-  <tr><td>GitHub 仓库</td><td>https://github.com/bzhangui/moonkit</td></tr>
-  <tr><td>项目方向</td><td>原创工具库</td></tr>
-  <tr><td>MoonBit 代码量</td><td>3994 LOC（含测试代码，24个源文件）</td></tr>
-  <tr><td>开源协议</td><td>Apache-2.0</td></tr>
-  <tr><td>开发周期</td><td>2026年7月7日 &mdash; 2026年7月10日</td></tr>
-</table>
+<h2>一、项目名称和 GitHub 仓库地址</h2>
+<p><strong>项目名称：</strong>MoonKit</p>
+<p><strong>GitHub 仓库：</strong>https://github.com/bzhangui/moonkit</p>
 
-<h2>1. 项目背景与选题动机</h2>
-<p>MoonBit 作为新一代国产编程语言，语言核心和标准库发展迅速，但在<strong>实用工具库层面仍存在空白</strong>。开发者在日常工作（配置解析、版本管理、数据校验、字符串处理、ID生成）中频繁造轮子，缺乏一站式的通用工具包。</p>
-<p>MoonKit 目标明确：<strong>为 MoonBit 生态提供一系列高质量、可独立复用的基础工具模块</strong>，降低应用开发门槛，提升开发效率。每个模块都可以单独引用，不强制捆绑。</p>
+<h2>二、项目简介</h2>
+<p>MoonKit 是一个面向 MoonBit 生态的通用工具库，为开发者提供配置解析、版本管理、数据校验、字符串处理、ID 生成等常用功能。项目包含 toml、semver、validators、strcase、ulid、convert 六个子模块，总计约 4000 行 MoonBit 代码。所有模块均零外部依赖、可独立引用，旨在降低 MoonBit 应用开发中的重复造轮子成本。</p>
 
-<h2>2. 技术架构与模块设计</h2>
-
-<table class="modules">
-  <tr><th>模块</th><th>功能描述</th><th>核心API数量</th><th>代码行数</th></tr>
-  <tr><td><code>toml</code></td><td>TOML v1.0 数据类型定义、文档序列化器、Builder模式文档构造器</td><td>28</td><td>775</td></tr>
-  <tr><td><code>semver</code></td><td>语义化版本2.0解析器、Precedence比较器、版本范围匹配（^ ~ &gt;= &lt;= &gt; &lt; =）、完整测试覆盖</td><td>35</td><td>818</td></tr>
-  <tr><td><code>validators</code></td><td>通用数据校验（邮箱/URL/长度/范围/正则）、Schema校验框架（链式声明、组合校验、批量执行）</td><td>32</td><td>545</td></tr>
-  <tr><td><code>strcase</code></td><td>字符串命名格式转换（camelCase/PascalCase/snake_case/kebab-case/Title Case），支持多分隔符自动识别</td><td>8</td><td>361</td></tr>
-  <tr><td><code>ulid</code></td><td>ULID规范唯一标识符生成（时间戳+随机数）、字符串/二进制双向编解码、合法性校验</td><td>12</td><td>230</td></tr>
-  <tr><td><code>convert</code></td><td>数据类型转换（字符串→数值解析/格式化填充/十六进制编解码/类型判断）</td><td>18</td><td>338</td></tr>
-  <tr><td><strong>合计</strong></td><td>&mdash;</td><td><strong>133+</strong></td><td><strong>3994</strong></td></tr>
-</table>
-
-<h3>架构特点</h3>
+<h2>三、项目方向与适用场景</h2>
+<p><strong>项目方向：</strong>原创工具库</p>
+<p><strong>适用场景：</strong></p>
 <ul>
-  <li><strong>模块化设计</strong>：6个独立子包，通过主库 <code>moonkit.mbt</code> 统一导出，也可按需单独引用</li>
-  <li><strong>Builder模式</strong>：TOML模块提供链式Builder API，符合现代API设计习惯</li>
-  <li><strong>Result类型</strong>：所有可能失败的函数统一使用 <code>Result[T, String]</code> 作为返回值</li>
-  <li><strong>零外部依赖</strong>：仅依赖 MoonBit 标准核心库（moonbitlang/core）</li>
-  <li><strong>wasm-gc优化</strong>：首选编译目标为WebAssembly，适配边缘计算和浏览器场景</li>
+  <li><strong>TOML 配置解析</strong>——读取和生成配置文件（如 moon.mod），适用于 CLI 工具和自动化脚本</li>
+  <li><strong>语义化版本处理</strong>——版本号解析、比较与范围匹配，适用于包管理器和依赖解析</li>
+  <li><strong>数据校验</strong>——用户输入验证（邮箱、URL、长度、正则），适用于 Web API 和表单校验</li>
+  <li><strong>字符串命名转换</strong>——camelCase/snake_case/PascalCase/kebab-case 互转，适用于代码生成和数据映射</li>
+  <li><strong>ULID 唯一标识符</strong>——分布式场景下的有序 ID 生成，适用于日志追踪、数据库主键和消息队列</li>
+  <li><strong>数据类型转换</strong>——字符串与数值互转、格式化填充、十六进制编解码</li>
 </ul>
 
-<h2>3. 工程质量说明</h2>
-<table class="modules">
-  <tr><th>维度</th><th>实践</th></tr>
-  <tr><td>测试覆盖</td><td>每个模块均配备独立测试文件，共10个测试文件，覆盖核心路径、边界条件和错误分支</td></tr>
-  <tr><td>版本管理</td><td>22个语义清晰的Git提交，遵循原子提交原则，每个commit对应一个独立功能点</td></tr>
-  <tr><td>CI/CD</td><td>已配置GitHub Actions工作流（copilot-setup-steps.yml），确保代码可自动构建和测试</td></tr>
-  <tr><td>文档</td><td>提供完整README（含代码示例）、每个模块均有docstring注释，API标准清晰</td></tr>
-  <tr><td>代码规范</td><td>遵循MoonBit官方编码规范，使用moon fmt格式化，类型安全，充分利用MoonBit强类型系统</td></tr>
+<h2>四、拟实现的核心功能</h2>
+<table>
+  <tr><th>模块</th><th>核心功能</th></tr>
+  <tr><td><code>toml</code></td><td>TOML v1.0 类型系统、文档序列化器、Builder 模式构造器</td></tr>
+  <tr><td><code>semver</code></td><td>SemVer 2.0 解析、Precedence 比较、版本范围匹配（^ ~ >= <= > < =）</td></tr>
+  <tr><td><code>validators</code></td><td>通用校验函数（邮箱/URL/长度/范围/正则）、Schema 链式校验框架</td></tr>
+  <tr><td><code>strcase</code></td><td>命名格式转换（camelCase/PascalCase/snake_case/kebab-case/Title Case）</td></tr>
+  <tr><td><code>ulid</code></td><td>ULID 生成、字符串/二进制编解码、合法性校验</td></tr>
+  <tr><td><code>convert</code></td><td>字符串解析、数值格式化、十六进制编解码、类型判断</td></tr>
 </table>
+<p>已全部实现，总计 3994 LOC，23 个源文件，10 个测试文件，22 次 Git 提交。</p>
 
-<h2>4. MoonBit 生态贡献价值</h2>
-<ol>
-  <li><strong>填补生态空白</strong>：MoonBit核心库尚未提供TOML解析、SemVer处理、ULID生成等能力，MoonKit直接补齐这些缺口</li>
-  <li><strong>降低迁移成本</strong>：名称和API风格参考Rust生态（serde/cargo、semver crate），降低从Rust/Go迁移到MoonBit的学习曲线</li>
-  <li><strong>可独立复用</strong>：每个模块依赖边界清晰，其他MoonBit项目可直接引用单个子包，不引入冗余依赖</li>
-  <li><strong>示范效应</strong>：展示MoonBit语言在类型系统、模式匹配、wasm编译方面的工程优势，为后续开源贡献者提供编码范本</li>
-  <li><strong>长期可维护</strong>：模块职责单一、API稳定、测试完整，适合作为社区长期维护的基础设施组件</li>
-</ol>
-
-<h2>5. 后续发展规划</h2>
-<ul>
-  <li>根据社区反馈持续完善API，补充更多实用模块（如CSV解析、Base64编解码、颜色处理）</li>
-  <li>发布到 mooncakes.io 官方注册表，接入 MoonBit 包生态</li>
-  <li>接入性能基准测试框架（moon bench），持续跟踪性能指标</li>
-  <li>积极参与MoonBit MVP长期人才计划，长期维护和贡献</li>
-</ul>
-
-<div class="footer">
-  <p>本申报书对应GitHub仓库：https://github.com/bzhangui/moonkit · 22 commits · 3994 LOC · Apache-2.0</p>
-</div>
+<h2>五、是否为原创项目</h2>
+<p><strong>本项目为原创项目。</strong>所有代码均由本人独立设计和编写，未移植或复制任何第三方开源项目。</p>
+<p>部分模块的 API 命名风格参考了 Rust 等语言的成熟生态库设计习惯（如 semver crate、serde 等），但具体实现方案和代码均为原创。</p>
 
 </body>
 </html>
