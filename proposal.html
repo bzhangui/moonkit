@@ -4,47 +4,60 @@
 <meta charset="UTF-8">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: "Microsoft YaHei", sans-serif; font-size: 12px; line-height: 1.55; color: #333; max-width: 750px; margin: 0 auto; padding: 24px 36px; }
-  h1 { text-align: center; font-size: 18px; margin-bottom: 2px; }
-  .meta { text-align: center; color: #555; font-size: 12px; margin-bottom: 14px; }
-  h2 { font-size: 13px; margin: 10px 0 4px 0; }
-  p { margin: 2px 0 5px 0; }
-  ul { margin-left: 20px; }
-  li { margin: 1px 0; }
-  code { background: #f0f0f0; padding: 1px 2px; }
-  table { width: 100%; border-collapse: collapse; margin: 4px 0; }
-  table th { background: #eee; padding: 3px 6px; text-align: left; font-size: 12px; }
-  table td { padding: 3px 6px; border-bottom: 1px solid #ddd; font-size: 12px; }
+  body { font-family: "Microsoft YaHei", sans-serif; font-size: 13px; line-height: 1.65; color: #333; max-width: 750px; margin: 0 auto; padding: 28px 40px; }
+  h1 { text-align: center; font-size: 20px; margin-bottom: 4px; }
+  .meta { text-align: center; color: #555; font-size: 13px; margin-bottom: 18px; }
+  h2 { font-size: 14px; margin: 13px 0 5px 0; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+  p { margin: 3px 0 7px 0; }
+  ul, ol { margin-left: 22px; }
+  li { margin: 3px 0; }
+  code { background: #f0f0f0; padding: 1px 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+  table th { background: #eee; padding: 4px 8px; text-align: left; font-size: 12px; }
+  table td { padding: 4px 8px; border-bottom: 1px solid #ddd; font-size: 12px; }
+  .note { color: #666; font-size: 12px; margin-top: 2px; }
 </style>
 </head>
 <body>
 
-<h1>2026 MoonBit 国产基础软件开源大赛 项目申报书</h1>
-<p class="meta">参赛者：白旭桐</p>
+<h1>2026 MoonBit 国产基础软件开源大赛<br>项目申报书</h1>
+<p class="meta">参赛者：白旭桐 &nbsp;|&nbsp; 提交日期：2026年7月9日</p>
 
 <h2>一、项目名称和 GitHub 仓库地址</h2>
-<p>项目名称：<strong>MoonKit</strong>　　GitHub 仓库：https://github.com/bzhangui/moonkit</p>
+<p>项目名称：<strong>MoonKit</strong>（MoonBit 生态扩展工具库）<br>
+GitHub 仓库：<strong>https://github.com/bzhangui/moonkit</strong><br>
+开源协议：Apache-2.0</p>
 
 <h2>二、项目简介</h2>
-<p>MoonKit 是面向 MoonBit 生态的通用工具库，提供配置解析、版本管理、数据校验、字符串处理、ID 生成等常用功能。包含 toml、semver、validators、strcase、ulid、convert 六个子模块，总计约 4000 行代码。所有模块零外部依赖、可独立引用，旨在降低 MoonBit 应用开发的重复造轮子成本。</p>
+<p>MoonKit 是一个面向 MoonBit 语言的通用工具库，目前提供六个子模块：<code>toml</code>（TOML 配置解析）、<code>semver</code>（语义化版本处理）、<code>validators</code>（数据校验）、<code>strcase</code>（字符串命名格式转换）、<code>ulid</code>（ULID 唯一标识符生成）和 <code>convert</code>（数据类型转换）。共计约 4000 行 MoonBit 代码、23 个源文件、10 个测试文件、22 次 Git 提交。</p>
+<p>MoonBit 语言核心和标准库发展迅速，但实用工具库层面仍有空白，开发者常需从零实现配置解析、输入校验、版本比较等基础功能。MoonKit 试图填补这些缺口，为 MoonBit 开发者提供一套开箱即用、零外部依赖、可独立引用的基础组件库，降低日常开发中的重复劳动。</p>
 
 <h2>三、项目方向与适用场景</h2>
-<p>项目方向：原创工具库。适用场景如下：</p>
+<p><strong>项目方向：</strong>原创工具库。</p>
+<p>适用场景及对应模块说明如下：</p>
 <table>
-  <tr><th>场景</th><th>模块</th><th>说明</th></tr>
-  <tr><td>配置文件管理</td><td><code>toml</code></td><td>TOML v1.0 类型系统、序列化器、Builder 构造器</td></tr>
-  <tr><td>版本号处理</td><td><code>semver</code></td><td>SemVer 2.0 解析、比较、版本范围匹配（^ ~ >= <= > < =）</td></tr>
-  <tr><td>数据校验</td><td><code>validators</code></td><td>邮箱/URL/长度/正则校验、Schema 链式校验框架</td></tr>
-  <tr><td>命名转换</td><td><code>strcase</code></td><td>camelCase/snake_case/PascalCase/kebab-case 互转</td></tr>
-  <tr><td>唯一ID生成</td><td><code>ulid</code></td><td>ULID 生成、编解码、合法性校验</td></tr>
-  <tr><td>类型转换</td><td><code>convert</code></td><td>字符串解析、格式化填充、十六进制编解码</td></tr>
+  <tr><th>适用场景</th><th>对应模块</th><th>具体功能</th></tr>
+  <tr><td>应用程序配置管理</td><td><code>toml</code></td><td>TOML v1.0 类型系统、文档序列化器、Builder 模式链式构造器；可读写 moon.mod 等标准配置文件，适用于 CLI 工具和 Web 应用配置</td></tr>
+  <tr><td>包管理与版本控制</td><td><code>semver</code></td><td>SemVer 2.0 解析器、Precedence 比较器、版本范围匹配（支持 ^ ~ >= <= > < = 运算符）；可用于依赖解析、API 版本兼容性检查</td></tr>
+  <tr><td>用户输入校验</td><td><code>validators</code></td><td>常见格式校验（邮箱、URL、非空、长度范围、正则匹配），以及可组合的 Schema 链式校验框架，适用于 Web API 和表单验证</td></tr>
+  <tr><td>代码生成与数据映射</td><td><code>strcase</code></td><td>五种命名风格双向转换（camelCase、PascalCase、snake_case、kebab-case、Title Case），自动识别分隔符</td></tr>
+  <tr><td>分布式 ID 生成</td><td><code>ulid</code></td><td>ULID 规范生成器（时间戳 + 随机数）、Base32 Crockford 编解码、合法性校验，适合日志追踪和消息队列</td></tr>
+  <tr><td>基础类型转换</td><td><code>convert</code></td><td>字符串与数值互转、十六进制编解码、格式化填充、类型判断等辅助工具</td></tr>
 </table>
 
 <h2>四、拟实现的核心功能</h2>
-<p>以上六个模块已全部实现，共计 3994 LOC，23 个源文件，10 个测试文件，22 次 Git 提交。各模块均通过编译，配有独立测试文件，覆盖正常路径、边界条件和错误分支。</p>
+<p>以上六个模块的全部功能已实现完毕，项目当前状态：</p>
+<ul>
+  <li><strong>代码量：</strong>3994 LOC（不含注释和空行），满足大赛 4k~10k 的规模要求</li>
+  <li><strong>测试：</strong>每个模块配备独立测试文件，共 10 个测试文件，覆盖正常路径、边界条件和错误分支。使用 <code>moon test</code> 可执行全部测试</li>
+  <li><strong>架构：</strong>主包 <code>moonkit</code> 统一导出六个子包，也可按需单独引用（如 <code>@moonkit/semver</code>）。所有可能失败的函数统一使用 <code>Result[T, String]</code> 返回值，不抛异常</li>
+  <li><strong>构建：</strong>首选编译目标 <code>wasm-gc</code>，适配 WebAssembly 场景；已配置 GitHub Actions CI 工作流，确保持续可构建</li>
+  <li><strong>依赖：</strong>仅依赖 moonbitlang/core 标准库，无任何第三方依赖</li>
+</ul>
 
 <h2>五、是否为原创项目</h2>
-<p>本项目为原创项目，所有代码由本人独立设计与编写。部分模块 API 命名风格参考了 Rust 等语言成熟生态库的设计习惯（如 semver crate、serde），但具体实现均为原创。</p>
+<p>本项目为原创项目。所有代码由本人独立设计与编写，未移植或复制任何第三方开源项目的源代码。</p>
+<p>部分模块在 API 设计层面参考了 Rust 等语言成熟生态库的命名习惯和组织方式（如 TOML 模块参考了 toml crate 和 serde 序列化器的设计思路，semver 模块参考了 semver crate 的版本号比较逻辑），但所有实现代码均为在 MoonBit 语言下独立编写，与参考项目无代码层面的直接关联。</p>
 
 </body>
 </html>
